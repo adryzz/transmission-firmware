@@ -14,6 +14,10 @@ panic-probe = { version = "0.3", features = ["print-defmt"] }
 
 # We're using a Pico by default on this template
 rp-pico = "0.7"
+thiserror = { version = "1.0", package = "thiserror-core", default-features = false }
+usb-device = "0.2.9"
+usbd-serial = "0.1.1"
+konst = "0.3.4"
 
 # but you can use any BSP. Uncomment this to use the pro_micro_rp2040 BSP instead
 # sparkfun-pro-micro-rp2040 = "0.6"

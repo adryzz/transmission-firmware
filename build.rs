@@ -12,6 +12,7 @@ use std::env;
 use std::fs::File;
 use std::io::Write;
 use std::path::PathBuf;
+use std::process::Command;
 
 fn main() {
     // Put `memory.x` in our output directory and ensure it's
@@ -28,4 +29,21 @@ fn main() {
     // here, we ensure the build script is only re-run when
     // `memory.x` is changed.
     println!("cargo:rerun-if-changed=memory.x");
+
+    let git_output = Command::new("git").args(&["describe", "--always", "--abbrev=40", "--dirty"]).output().unwrap();
+    let commit_hash = String::from_utf8(git_output.stdout).unwrap();
+    println!("cargo:rustc-env=COMMIT_HASH={}", commit_hash);
+    println!("cargo:rustc-env=VERSION_CODE={}", get_version_from_string(env!("CARGO_PKG_VERSION")));
+}
+
+fn get_version_from_string(string: &str) -> u16 {
+    let mut ver: u16 = 0x0000;
+    for (_, c) in string.chars().enumerate() {
+        if c != '.' {
+            ver = ver << 4;
+            ver += c.to_digit(16).unwrap() as u16;
+        }
+        println!("{:#06X}", ver);
+    }
+    ver
 }

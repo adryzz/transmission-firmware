@@ -382,23 +382,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "rp2040-project-template"
-version = "0.1.0"
-dependencies = [
- "cortex-m",
- "cortex-m-rt",
- "defmt",
- "defmt-rtt",
- "embedded-hal",
- "konst",
- "panic-probe",
- "rp-pico",
- "thiserror-core",
- "usb-device",
- "usbd-serial",
-]
-
-[[package]]
 name = "rustc_version"
 version = "0.2.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -488,6 +471,23 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn 2.0.13",
+]
+
+[[package]]
+name = "transmission-firmware"
+version = "0.1.0"
+dependencies = [
+ "cortex-m",
+ "cortex-m-rt",
+ "defmt",
+ "defmt-rtt",
+ "embedded-hal",
+ "konst",
+ "panic-probe",
+ "rp-pico",
+ "thiserror-core",
+ "usb-device",
+ "usbd-serial",
 ]
 
 [[package]]
